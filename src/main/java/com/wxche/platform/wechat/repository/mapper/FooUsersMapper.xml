@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxche.platform.wechat.repository.mapper.FooUsersMapper">
+  <resultMap id="BaseResultMap" type="com.wxche.platform.wechat.repository.model.FooUsers">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_nick_name" jdbcType="VARCHAR" property="userNickName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_mobile" jdbcType="VARCHAR" property="userMobile" />
+    <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
+    <result column="user_certid" jdbcType="VARCHAR" property="userCertid" />
+    <result column="wx_id" jdbcType="VARCHAR" property="wxId" />
+    <result column="wx_name" jdbcType="VARCHAR" property="wxName" />
+    <result column="user_sign" jdbcType="VARCHAR" property="userSign" />
+    <result column="remark1" jdbcType="VARCHAR" property="remark1" />
+    <result column="remark2" jdbcType="VARCHAR" property="remark2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_nick_name, user_name, user_mobile, user_sex, user_certid, wx_id, wx_name, 
+    user_sign, remark1, remark2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from foo_users
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from foo_users
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from foo_users
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wxche.platform.wechat.repository.model.FooUsers">
+    insert into foo_users (user_id, user_nick_name, user_name, 
+      user_mobile, user_sex, user_certid, 
+      wx_id, wx_name, user_sign, 
+      remark1, remark2)
+    values (#{userId,jdbcType=BIGINT}, #{userNickName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userMobile,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, #{userCertid,jdbcType=VARCHAR}, 
+      #{wxId,jdbcType=VARCHAR}, #{wxName,jdbcType=VARCHAR}, #{userSign,jdbcType=VARCHAR}, 
+      #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wxche.platform.wechat.repository.model.FooUsers">
+    insert into foo_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userNickName != null">
+        user_nick_name,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userMobile != null">
+        user_mobile,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="userCertid != null">
+        user_certid,
+      </if>
+      <if test="wxId != null">
+        wx_id,
+      </if>
+      <if test="wxName != null">
+        wx_name,
+      </if>
+      <if test="userSign != null">
+        user_sign,
+      </if>
+      <if test="remark1 != null">
+        remark1,
+      </if>
+      <if test="remark2 != null">
+        remark2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userNickName != null">
+        #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null">
+        #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userCertid != null">
+        #{userCertid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxId != null">
+        #{wxId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxName != null">
+        #{wxName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSign != null">
+        #{userSign,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null">
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wxche.platform.wechat.repository.model.FooUsers">
+    update foo_users
+    <set>
+      <if test="userNickName != null">
+        user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null">
+        user_mobile = #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userCertid != null">
+        user_certid = #{userCertid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxId != null">
+        wx_id = #{wxId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxName != null">
+        wx_name = #{wxName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSign != null">
+        user_sign = #{userSign,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null">
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wxche.platform.wechat.repository.model.FooUsers">
+    update foo_users
+    set user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_mobile = #{userMobile,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      user_certid = #{userCertid,jdbcType=VARCHAR},
+      wx_id = #{wxId,jdbcType=VARCHAR},
+      wx_name = #{wxName,jdbcType=VARCHAR},
+      user_sign = #{userSign,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+</mapper>
