@@ -18,7 +18,14 @@ public class PinCheInfoService {
     @Autowired
     private FooUsersMapper usersMapper;
 
-    public List<FooUsers> queryUsers(){
-        return  usersMapper.selectAll();
+    public FooUsers queryUser(){
+        return  usersMapper.selectByPrimaryKey(1l);
+    }
+    public FooUsersMapper getUsersMapper() {
+        return usersMapper;
+    }
+
+    public void setUsersMapper(FooUsersMapper usersMapper) {
+        this.usersMapper = usersMapper;
     }
 }

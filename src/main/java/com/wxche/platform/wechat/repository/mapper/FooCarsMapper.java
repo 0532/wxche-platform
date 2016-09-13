@@ -1,7 +1,9 @@
 package com.wxche.platform.wechat.repository.mapper;
 
 import com.wxche.platform.wechat.repository.model.FooCars;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface FooCarsMapper {
     int deleteByPrimaryKey(Long carId);
 

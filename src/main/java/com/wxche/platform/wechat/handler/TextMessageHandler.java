@@ -10,9 +10,9 @@ import com.wxche.platform.wechat.service.PinCheInfoService;
 import com.wxche.platform.wechat.utils.MessageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -24,16 +24,16 @@ import java.util.List;
 public class TextMessageHandler extends AbstractMessageHandler {
     private static final Logger logger = LoggerFactory.getLogger(TextMessageHandler.class);
 
-    @Resource
+    @Autowired
     private PinCheInfoService pinCheInfoService;
 
     public BaseResponseMessage doHandleMessage(BaseRequestMessage requestMessage) {
         if (requestMessage instanceof TextRequestMessage) {
             //在这里实现你自己的业务逻辑
             String rtnMsg = "helloWorld!";
-            List<FooUsers> users = pinCheInfoService.queryUsers();
+            FooUsers users = pinCheInfoService.queryUser();
             if (users != null)
-                rtnMsg = users.get(0).getUserMobile();
+                rtnMsg = users.getUserMobile();
             return MessageUtils.buildTextResponseMessage(requestMessage, rtnMsg);
         }
         return null;

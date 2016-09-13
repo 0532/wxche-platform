@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxche.platform.wechat.repository.mapper.RouteInfosMapper">
+  <resultMap id="BaseResultMap" type="com.wxche.platform.wechat.repository.model.RouteInfos">
+    <id column="info_id" jdbcType="BIGINT" property="infoId" />
+    <id column="route_date" jdbcType="VARCHAR" property="routeDate" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="car_id" jdbcType="BIGINT" property="carId" />
+    <result column="route_time" jdbcType="VARCHAR" property="routeTime" />
+    <result column="route_info" jdbcType="VARCHAR" property="routeInfo" />
+    <result column="route_from" jdbcType="INTEGER" property="routeFrom" />
+    <result column="route_to" jdbcType="INTEGER" property="routeTo" />
+    <result column="creatr_time" jdbcType="TIMESTAMP" property="creatrTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    info_id, route_date, user_id, car_id, route_time, route_info, route_from, route_to, 
+    creatr_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.wxche.platform.wechat.repository.model.RouteInfosKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route_infos
+    where info_id = #{infoId,jdbcType=BIGINT}
+      and route_date = #{routeDate,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.wxche.platform.wechat.repository.model.RouteInfosKey">
+    delete from route_infos
+    where info_id = #{infoId,jdbcType=BIGINT}
+      and route_date = #{routeDate,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wxche.platform.wechat.repository.model.RouteInfos">
+    insert into route_infos (info_id, route_date, user_id, 
+      car_id, route_time, route_info, 
+      route_from, route_to, creatr_time, 
+      remark)
+    values (#{infoId,jdbcType=BIGINT}, #{routeDate,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, 
+      #{carId,jdbcType=BIGINT}, #{routeTime,jdbcType=VARCHAR}, #{routeInfo,jdbcType=VARCHAR}, 
+      #{routeFrom,jdbcType=INTEGER}, #{routeTo,jdbcType=INTEGER}, #{creatrTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wxche.platform.wechat.repository.model.RouteInfos">
+    insert into route_infos
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="infoId != null">
+        info_id,
+      </if>
+      <if test="routeDate != null">
+        route_date,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="routeTime != null">
+        route_time,
+      </if>
+      <if test="routeInfo != null">
+        route_info,
+      </if>
+      <if test="routeFrom != null">
+        route_from,
+      </if>
+      <if test="routeTo != null">
+        route_to,
+      </if>
+      <if test="creatrTime != null">
+        creatr_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="infoId != null">
+        #{infoId,jdbcType=BIGINT},
+      </if>
+      <if test="routeDate != null">
+        #{routeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="routeTime != null">
+        #{routeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="routeInfo != null">
+        #{routeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="routeFrom != null">
+        #{routeFrom,jdbcType=INTEGER},
+      </if>
+      <if test="routeTo != null">
+        #{routeTo,jdbcType=INTEGER},
+      </if>
+      <if test="creatrTime != null">
+        #{creatrTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wxche.platform.wechat.repository.model.RouteInfos">
+    update route_infos
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null">
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="routeTime != null">
+        route_time = #{routeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="routeInfo != null">
+        route_info = #{routeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="routeFrom != null">
+        route_from = #{routeFrom,jdbcType=INTEGER},
+      </if>
+      <if test="routeTo != null">
+        route_to = #{routeTo,jdbcType=INTEGER},
+      </if>
+      <if test="creatrTime != null">
+        creatr_time = #{creatrTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where info_id = #{infoId,jdbcType=BIGINT}
+      and route_date = #{routeDate,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wxche.platform.wechat.repository.model.RouteInfos">
+    update route_infos
+    set user_id = #{userId,jdbcType=BIGINT},
+      car_id = #{carId,jdbcType=BIGINT},
+      route_time = #{routeTime,jdbcType=VARCHAR},
+      route_info = #{routeInfo,jdbcType=VARCHAR},
+      route_from = #{routeFrom,jdbcType=INTEGER},
+      route_to = #{routeTo,jdbcType=INTEGER},
+      creatr_time = #{creatrTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where info_id = #{infoId,jdbcType=BIGINT}
+      and route_date = #{routeDate,jdbcType=VARCHAR}
+  </update>
+</mapper>
