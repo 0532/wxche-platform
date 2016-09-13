@@ -6,6 +6,7 @@
     <typeAliases>
         <typeAlias type="com.wxche.platform.wechat.repository.model.FooCars" alias="FooCars"/>
         <typeAlias type="com.wxche.platform.wechat.repository.model.FooUsers" alias="FooUsers"/>
+        <typeAlias type="com.wxche.platform.wechat.repository.model.RouteInfos" alias="RouteInfos"/>
     </typeAliases>
 
 </configuration>
