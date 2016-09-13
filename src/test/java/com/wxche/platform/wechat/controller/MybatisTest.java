@@ -14,6 +14,6 @@ public class MybatisTest {
     public void  TestMybatis()throws Exception{
         ApplicationContext ac = new ClassPathXmlApplicationContext("/applicationContext.xml");
         PinCheInfoService pinCheInfoService = (PinCheInfoService) ac.getBean("pinCheInfoService");
-        pinCheInfoService.queryUsers();
+        //pinCheInfoService.queryUsers();
     }
 }
