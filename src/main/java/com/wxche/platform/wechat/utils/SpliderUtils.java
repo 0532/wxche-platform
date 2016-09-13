@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class SpliderUtils {
 
-    private static final String FUN_URL = "http://www.lsw1994.com/api/xh/";
+    private static final String FUN_URL = "http://wanglichao.com";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SpliderUtils.class);
 

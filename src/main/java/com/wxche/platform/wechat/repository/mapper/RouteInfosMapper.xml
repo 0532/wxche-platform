@@ -24,6 +24,12 @@
     where info_id = #{infoId,jdbcType=BIGINT}
       and route_date = #{routeDate,jdbcType=VARCHAR}
   </select>
+  <select id="queryRouteInfos" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from route_infos
+    where route_date = #{routeDate,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="com.wxche.platform.wechat.repository.model.RouteInfosKey">
     delete from route_infos
     where info_id = #{infoId,jdbcType=BIGINT}

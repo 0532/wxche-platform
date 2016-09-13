@@ -4,6 +4,8 @@ import com.wxche.platform.wechat.repository.model.RouteInfos;
 import com.wxche.platform.wechat.repository.model.RouteInfosKey;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface RouteInfosMapper {
     int deleteByPrimaryKey(RouteInfosKey key);
@@ -17,4 +19,6 @@ public interface RouteInfosMapper {
     int updateByPrimaryKeySelective(RouteInfos record);
 
     int updateByPrimaryKey(RouteInfos record);
+
+    List<RouteInfos> queryRouteInfos(String routeDate);
 }

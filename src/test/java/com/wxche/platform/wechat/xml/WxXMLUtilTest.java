@@ -2,6 +2,11 @@
  * 
  */
 package com.wxche.platform.wechat.xml;
+
+import org.dom4j.DocumentException;
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * @author honey.zhao@aliyun.com
  * @version Jul 28, 2013
@@ -14,7 +19,7 @@ public class WxXMLUtilTest {
 			+ "<FromUserName><![CDATA[fromUser]]></FromUserName> "
 			+ "<CreateTime>1348831860</CreateTime>"
 			+ "<MsgType><![CDATA[text]]></MsgType>"
-			+ "<Content><![CDATA[this is a test]]></Content>"
+			+ "<Content><![CDATA[1]]></Content>"
 			+ "<MsgId>1234567890123456</MsgId>" + "</xml>";
 	
 //	@Test

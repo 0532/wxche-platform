@@ -27,7 +27,7 @@ import java.util.Map;
  * Created on 2016/8/5 16:29
  */
 @Controller
-@RequestMapping(value = "/wechat")
+@RequestMapping(value = "wechat")
 public class WechatController {
 
     private static final Logger logger = LoggerFactory.getLogger(WechatController.class);

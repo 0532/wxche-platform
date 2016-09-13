@@ -1,18 +1,23 @@
 package com.wxche.platform.wechat.handler;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.wxche.platform.wechat.annotation.MessageWorker;
 import com.wxche.platform.wechat.enums.MessageType;
 import com.wxche.platform.wechat.message.request.BaseRequestMessage;
 import com.wxche.platform.wechat.message.request.TextRequestMessage;
 import com.wxche.platform.wechat.message.response.BaseResponseMessage;
 import com.wxche.platform.wechat.repository.model.FooUsers;
+import com.wxche.platform.wechat.repository.model.RouteInfos;
 import com.wxche.platform.wechat.service.PinCheInfoService;
+import com.wxche.platform.wechat.utils.GsonUtil;
 import com.wxche.platform.wechat.utils.MessageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,9 +36,15 @@ public class TextMessageHandler extends AbstractMessageHandler {
         if (requestMessage instanceof TextRequestMessage) {
             //在这里实现你自己的业务逻辑
             String rtnMsg = "helloWorld!";
-            FooUsers users = pinCheInfoService.queryUser();
-            if (users != null)
-                rtnMsg = users.getUserMobile();
+            logger.info("######:"+((TextRequestMessage) requestMessage).getContent());
+            if ("1".equals(((TextRequestMessage) requestMessage).getContent())){
+                List<RouteInfos> routeInfosList = pinCheInfoService.queryRouteInfos();
+                rtnMsg = GsonUtil.toJson(routeInfosList, ArrayList.class);
+            }else {
+                FooUsers users = pinCheInfoService.queryUser();
+                if (users != null)
+                    rtnMsg = users.getUserMobile();
+            }
             return MessageUtils.buildTextResponseMessage(requestMessage, rtnMsg);
         }
         return null;
