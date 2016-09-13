@@ -1,5 +1,7 @@
 package com.wxche.platform.wechat.repository.model;
 
+import java.util.Date;
+
 public class FooUsers {
     private Long userId;
 
@@ -19,7 +21,9 @@ public class FooUsers {
 
     private String userSign;
 
-    private String remark1;
+    private Integer userRoute;
+
+    private Date createTime;
 
     private String remark2;
 
@@ -95,12 +99,20 @@ public class FooUsers {
         this.userSign = userSign == null ? null : userSign.trim();
     }
 
-    public String getRemark1() {
-        return remark1;
+    public Integer getUserRoute() {
+        return userRoute;
     }
 
-    public void setRemark1(String remark1) {
-        this.remark1 = remark1 == null ? null : remark1.trim();
+    public void setUserRoute(Integer userRoute) {
+        this.userRoute = userRoute;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getRemark2() {

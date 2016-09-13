@@ -1,5 +1,7 @@
 package com.wxche.platform.wechat.repository.model;
 
+import java.util.Date;
+
 public class FooCars {
     private Long carId;
 
@@ -13,7 +15,7 @@ public class FooCars {
 
     private String buyYear;
 
-    private String remark1;
+    private Date createTime;
 
     public Long getCarId() {
         return carId;
@@ -63,11 +65,11 @@ public class FooCars {
         this.buyYear = buyYear == null ? null : buyYear.trim();
     }
 
-    public String getRemark1() {
-        return remark1;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setRemark1(String remark1) {
-        this.remark1 = remark1 == null ? null : remark1.trim();
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

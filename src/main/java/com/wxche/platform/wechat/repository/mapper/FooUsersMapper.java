@@ -1,11 +1,7 @@
 package com.wxche.platform.wechat.repository.mapper;
 
 import com.wxche.platform.wechat.repository.model.FooUsers;
-import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-@Repository
 public interface FooUsersMapper {
     int deleteByPrimaryKey(Long userId);
 
@@ -13,12 +9,9 @@ public interface FooUsersMapper {
 
     int insertSelective(FooUsers record);
 
-    //FooUsers selectByPrimaryKey(Long userId);
-
-    List<FooUsers> selectAll();
+    FooUsers selectByPrimaryKey(Long userId);
 
     int updateByPrimaryKeySelective(FooUsers record);
 
     int updateByPrimaryKey(FooUsers record);
-
 }

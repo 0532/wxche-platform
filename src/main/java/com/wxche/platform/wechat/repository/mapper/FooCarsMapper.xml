@@ -8,6 +8,119 @@
     <result column="car_model" jdbcType="VARCHAR" property="carModel" />
     <result column="car_seat" jdbcType="VARCHAR" property="carSeat" />
     <result column="buy_year" jdbcType="VARCHAR" property="buyYear" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_id, user_id, user_nick_name, car_model, car_seat, buy_year, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from foo_cars
+    where car_id = #{carId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from foo_cars
+    where car_id = #{carId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wxche.platform.wechat.repository.model.FooCars">
+    insert into foo_cars (car_id, user_id, user_nick_name, 
+      car_model, car_seat, buy_year, 
+      create_time)
+    values (#{carId,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{userNickName,jdbcType=VARCHAR}, 
+      #{carModel,jdbcType=VARCHAR}, #{carSeat,jdbcType=VARCHAR}, #{buyYear,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wxche.platform.wechat.repository.model.FooCars">
+    insert into foo_cars
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userNickName != null">
+        user_nick_name,
+      </if>
+      <if test="carModel != null">
+        car_model,
+      </if>
+      <if test="carSeat != null">
+        car_seat,
+      </if>
+      <if test="buyYear != null">
+        buy_year,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null">
+        #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="carModel != null">
+        #{carModel,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeat != null">
+        #{carSeat,jdbcType=VARCHAR},
+      </if>
+      <if test="buyYear != null">
+        #{buyYear,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wxche.platform.wechat.repository.model.FooCars">
+    update foo_cars
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null">
+        user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="carModel != null">
+        car_model = #{carModel,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeat != null">
+        car_seat = #{carSeat,jdbcType=VARCHAR},
+      </if>
+      <if test="buyYear != null">
+        buy_year = #{buyYear,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wxche.platform.wechat.repository.model.FooCars">
+    update foo_cars
+    set user_id = #{userId,jdbcType=VARCHAR},
+      user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      car_model = #{carModel,jdbcType=VARCHAR},
+      car_seat = #{carSeat,jdbcType=VARCHAR},
+      buy_year = #{buyYear,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where car_id = #{carId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wxche.platform.wechat.repository.model.FooCars">
+    <id column="car_id" jdbcType="BIGINT" property="carId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_nick_name" jdbcType="VARCHAR" property="userNickName" />
+    <result column="car_model" jdbcType="VARCHAR" property="carModel" />
+    <result column="car_seat" jdbcType="VARCHAR" property="carSeat" />
+    <result column="buy_year" jdbcType="VARCHAR" property="buyYear" />
     <result column="remark1" jdbcType="VARCHAR" property="remark1" />
   </resultMap>
   <sql id="Base_Column_List">
