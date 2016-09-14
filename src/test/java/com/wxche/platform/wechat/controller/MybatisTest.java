@@ -16,8 +16,9 @@ public class MybatisTest {
 
     @Test
     public void  TestMybatis()throws Exception{
-        ApplicationContext ac = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        PinCheInfoService pinCheInfoService = (PinCheInfoService) ac.getBean("pinCheInfoService");
+        //ApplicationContext ac = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+        PinCheInfoService pinCheInfoService = (PinCheInfoService) context.getBean("pinCheInfoService");
         List<RouteInfos> routeInfoses = pinCheInfoService.queryRouteInfos();
         System.err.println(GsonUtil.toJson(routeInfoses));
     }
